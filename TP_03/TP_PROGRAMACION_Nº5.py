@@ -5,6 +5,7 @@
 segundos = int(input("Por favor ingrese los segundos a convertir en horas: "))
 
 
+# Definicion de funcion
 def segundos_a_horas(segundos):
     horas = segundos / 3600
     return horas
