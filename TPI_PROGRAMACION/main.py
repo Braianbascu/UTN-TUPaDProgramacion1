@@ -2,16 +2,11 @@
 
 # IMPORTACIONES
 from funciones import cargar_herramientas
-from funciones import validar_opcion
 from funciones import mostrar_inventario
 from funciones import reporte_agotados
 from funciones import alta_producto
 from funciones import consultar_stock
-
-
-def actualizar_stock(inventario):
-    print("6")
-
+from funciones import actualizar_stock
 
 # Menu principal
 
@@ -39,7 +34,8 @@ def main():
             print("")
 
             # INGRESO OPCION
-            opcion = validar_opcion(1, 7)
+            opcion = int(input("Ingrese su eleccion: "))
+            print("")
 
             # FUNCIONES DEL MENU
 
@@ -64,6 +60,9 @@ def main():
             elif opcion == 7:
                 print("Saliendo del sistema...")
                 break
+
+            else:
+                raise ValueError("Opcion fuera de rango (1 a 7)")
 
         except ValueError as e:
             print(f"Error: {e}")
