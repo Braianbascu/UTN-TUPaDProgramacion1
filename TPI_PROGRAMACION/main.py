@@ -1,9 +1,8 @@
 # Trabajo Integrador Programacion 1
 
-
-# Funciones
-def cargar_herramientas(inventario):
-    print("1")
+# IMPORTACIONES
+from funciones import cargar_herramientas
+from funciones import validar_opcion
 
 
 def mostrar_inventario(inventario):
@@ -24,30 +23,6 @@ def alta_producto(inventario):
 
 def actualizar_stock(inventario):
     print("6")
-
-
-def validar_opcion(minimo, maximo):
-    while True:
-
-        opcion = input("Ingrese su eleccion: ")
-        print("")
-
-        # Validaciones opcione
-        if opcion == "":
-            print("Debe ingresar un valor")
-            print("")
-
-        elif not opcion.isdigit():
-            print("Debe ingresar un valor numerico")
-            print("")
-
-        else:
-            opcion = int(opcion)
-            if opcion < minimo or opcion > maximo:
-                print("Error opcion fuera de rango")
-                print("")
-            else:
-                return opcion
 
 
 # Menu principal
@@ -80,7 +55,6 @@ def main():
 
         if opcion == 1:
             cargar_herramientas(inventario)
-            print("Opcion 1")
 
         elif opcion == 2:
             print("Opcion 2")
