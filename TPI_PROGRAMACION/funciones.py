@@ -1,4 +1,4 @@
-# FUNCIONES
+# FUNCIONES AUXILIARES
 
 
 # VALIDAR OPCIONES
@@ -26,13 +26,17 @@ def validar_opcion(minimo, maximo):
                 return opcion
 
 
-# CARGAR HERRAMIENTAS
+# FUNCIONES DEL MENU
+
+
+# OPCION 1 - CARGAR HERRAMIENTAS
 def cargar_herramientas(inventario):
 
     # Solcitud de cantidad de herramientas
     while True:
         try:
             cantidad = int(input("Ingrese la cantidad de productos a cargar: "))
+            print("")
 
             if cantidad <= 0:
                 raise ValueError("Debe ingresar un numero mayor a cero")
@@ -85,11 +89,12 @@ def cargar_herramientas(inventario):
         }
 
         inventario.append(herramienta)
+        print("")
         print("Herramienta cargada con exito")
         print("")
 
 
-# CARGAR INVENTARIO HERRAMIENTAS
+# OPCION 2 - CARGAR INVENTARIO HERRAMIENTAS
 def mostrar_inventario(inventario):
 
     # Verificar si existen prductos
@@ -99,13 +104,47 @@ def mostrar_inventario(inventario):
     # Impresion de Inventario
     else:
         print("--INVENTARIO DE HERRAMIENTAS--")
-        for herramientas in inventario:
+        for herramienta in inventario:
             print(
-                f"Herramienta: {herramientas['herramienta']} | Stock: {herramientas['cantidad']}"
+                f"Herramienta: {herramienta['herramienta']} | Stock: {herramienta['cantidad']}"
             )
 
+    print("")
 
-# REPORTE DE AGOTADOS
+
+# OPCION 3 - CONSULTAR STOCK
+def consultar_stock(inventario):
+
+    busqueda = False
+
+    if len(inventario) == 0:
+        print("El inventario se encuentra vacio")
+        return
+
+    nombre_herramienta = input(
+        "ingrese el nombre de la herramienta a consultar: "
+    ).strip()
+    print("")
+
+    if nombre_herramienta == "":
+        raise ValueError("El nombre no debe estar vacio")
+
+    for herramienta in inventario:
+        if nombre_herramienta.lower() == herramienta["herramienta"].lower():
+
+            busqueda = True
+
+            print(
+                f"Se encontro la herramienta buscada: {herramienta['herramienta']} | stock: {herramienta['cantidad']}"
+            )
+
+    if busqueda == False:
+        print("No se encontro la herramienta en el inventario")
+
+    print("")
+
+
+# OPCION 4 - REPORTE DE AGOTADOS
 def reporte_agotados(inventario):
 
     agotados = False
@@ -125,3 +164,34 @@ def reporte_agotados(inventario):
 
         if agotados == False:
             print("No existen herramientas con stock 0")
+
+    print("")
+
+
+# OPCION 5 - ALTA PRODUCTO
+def alta_producto(inventario):
+
+    # Validacion de nombre y stock
+    nombre_herramienta = input("Ingrese el nombre de la herramienta: ").strip()
+
+    if nombre_herramienta == "":
+        raise ValueError("El nombre no puede estar vacio")
+
+    for herramienta in inventario:
+        if nombre_herramienta.lower() == herramienta["herramienta"].lower():
+            raise ValueError("Error, ya existe una herramienta con este nombre")
+
+    stock_herramienta = int(input("Ingrese el stock: "))
+
+    if stock_herramienta < 0:
+        raise ValueError("El producto no puede tener un stock negativo")
+
+    herramienta = {
+        "herramienta": nombre_herramienta,
+        "cantidad": stock_herramienta,
+    }
+
+    inventario.append(herramienta)
+    print("")
+    print("Herramienta cargada con exito")
+    print("")
