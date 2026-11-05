@@ -3,10 +3,7 @@
 # IMPORTACIONES
 from funciones import cargar_herramientas
 from funciones import validar_opcion
-
-
-def mostrar_inventario(inventario):
-    print("2")
+from funciones import mostrar_inventario
 
 
 def consultar_stock(inventario):
@@ -57,7 +54,6 @@ def main():
             cargar_herramientas(inventario)
 
         elif opcion == 2:
-            print("Opcion 2")
             mostrar_inventario(inventario)
 
         elif opcion == 3:

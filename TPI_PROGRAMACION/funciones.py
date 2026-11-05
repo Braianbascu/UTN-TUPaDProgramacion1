@@ -87,3 +87,19 @@ def cargar_herramientas(inventario):
         inventario.append(herramienta)
         print("Herramienta cargada con exito")
         print("")
+
+
+# CARGAR INVENTARIO HERRAMIENTAS
+def mostrar_inventario(inventario):
+
+    # Verificar si existen prductos
+    if len(inventario) == 0:
+        print("El inventario esta vacio")
+
+    # Impresion de Inventario
+    else:
+        print("--INVENTARIO DE HERRAMIENTAS--")
+        for herramientas in inventario:
+            print(
+                f"Herramienta: {herramientas['herramienta']} | Stock: {herramientas['cantidad']}"
+            )
