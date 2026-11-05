@@ -4,14 +4,11 @@
 from funciones import cargar_herramientas
 from funciones import validar_opcion
 from funciones import mostrar_inventario
+from funciones import reporte_agotados
 
 
 def consultar_stock(inventario):
     print("3")
-
-
-def reporte_agotados(inventario):
-    print("4")
 
 
 def alta_producto(inventario):

@@ -103,3 +103,25 @@ def mostrar_inventario(inventario):
             print(
                 f"Herramienta: {herramientas['herramienta']} | Stock: {herramientas['cantidad']}"
             )
+
+
+# REPORTE DE AGOTADOS
+def reporte_agotados(inventario):
+
+    agotados = False
+
+    if len(inventario) == 0:
+        print("El inventario esta vacio")
+    else:
+
+        for herramienta in inventario:
+            if herramienta["cantidad"] == 0:
+
+                agotados = True
+
+                print(
+                    f"Herramienta: {herramienta['herramienta']} | Stock: {herramienta['cantidad']}"
+                )
+
+        if agotados == False:
+            print("No existen herramientas con stock 0")
