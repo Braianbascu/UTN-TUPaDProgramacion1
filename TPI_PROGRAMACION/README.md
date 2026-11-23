@@ -6,7 +6,7 @@ Trabajo Práctico Integrador – Programación 1
 
 📋 Descripción del proyecto
 
-Sistema de gestión de inventario desarrollado en Python para una ferretería. Permite administrar las herramientas y controlar las cantidades disponibles mediante un menú interactivo por consola.
+Sistema de gestión de inventario para una ferretería, desarrollado en Python. Permite administrar herramientas y controlar el stock mediante un menú interactivo por consola, ofreciendo funcionalidades para cargar nuevos productos, consultar existencias, actualizar cantidades y generar reportes de herramientas agotadas.
 
 
 
