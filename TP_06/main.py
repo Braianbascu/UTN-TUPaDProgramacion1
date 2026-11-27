@@ -5,21 +5,32 @@
 
 
 # 1 - MOSTRAR PRODUCTOS
-def mostrar_productos():
+def mostrar_productos(productos):
 
-    with open("productos.txt", "r", encoding="utf-8") as archivo:
+    for producto in productos:
 
-        for linea in archivo:
-            datos = linea.strip().split(",")
-
-            nombre = datos[0]
-            precio = datos[1]
-            cantidad = datos[2]
-
-            print(f"Producto:{nombre} | Precio:{precio} | Cantidad:{cantidad}")
+        print(
+            f"Producto: {producto['nombre']} | "
+            f"Precio: ${producto['precio']} | "
+            f"Cantidad: {producto['cantidad']}"
+        )
 
 
-# 2 - CARGAR PRODUCTOS EN UNA LISTA
+# 2 - AGREGAR PRODUCTOS
+def agregar_productos(productos):
+
+    nombre = input("Ingrese el nombre del producto: ").strip()
+    precio = float(input("Ingrese el precio del producto: "))
+    cantidad = int(input("Ingrese la cantidad del producto: "))
+
+    producto = {"nombre": nombre, "precio": precio, "cantidad": cantidad}
+
+    productos.append(producto)
+
+    print("Producto agregado correctamente")
+
+
+# 3 - CARGAR PRODUCTOS EN UNA LISTA
 def cargar_productos():
 
     productos = []
@@ -40,31 +51,65 @@ def cargar_productos():
     return productos
 
 
+# 4 - BUSCAR PRODUCTOS
+def buscar_producto(productos):
+
+    nombre_buscado = input("Ingrese el nombre del producto a buscar: ").strip()
+
+    for producto in productos:
+
+        if producto["nombre"].lower() == nombre_buscado.lower():
+
+            print(f"Producto: {producto['nombre']}")
+            print(f"Precio: ${producto['precio']}")
+            print(f"Cantidad: {producto['cantidad']}")
+            return
+
+    print("Producto no encontrado")
+
+
+# 5 - GUARDAR PRODUCTOS AGREGADOS EN TXT
+def guardar_productos(productos):
+
+    with open("productos.txt", "w", encoding="utf-8") as archivo:
+
+        for producto in productos:
+
+            archivo.write(
+                f"{producto['nombre']},{producto['precio']},{producto['cantidad']}\n"
+            )
+
+    print("Productos guardados correctamente")
+
+
 # PROGRAMA PRINCIPAL
 
 
-# Impresion de menu
 def mostrar_menu():
+
     print("")
-    print("---SISTEMA DE GESTION DE PRODUCTOS---")
+    print("--- SISTEMA DE GESTION DE PRODUCTOS ---")
     print("")
     print("1- Mostrar productos")
     print("2- Agregar productos")
     print("3- Buscar productos")
-    print("4- Guardar productos")
+    print("4- Guardar productos en la base de datos")
     print("5- Salir")
     print("")
 
 
-# Menu y validacion de opciones
 def main():
+
+    productos = cargar_productos()
 
     opcion = 0
 
     while opcion != 5:
+
         mostrar_menu()
 
         while True:
+
             seleccion = input("Ingrese una opcion: ").strip()
             print("")
 
@@ -85,16 +130,16 @@ def main():
                 break
 
         if opcion == 1:
-            mostrar_productos()
+            mostrar_productos(productos)
 
         elif opcion == 2:
-            cargar_productos()
+            agregar_productos(productos)
 
         elif opcion == 3:
-            print("Buscar productos")
+            buscar_producto(productos)
 
         elif opcion == 4:
-            print("Guardar productos")
+            guardar_productos(productos)
 
         elif opcion == 5:
             print("Finalizando el programa...")
